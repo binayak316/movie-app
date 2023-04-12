@@ -3,8 +3,11 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:movie_app/Pages/widgets/categories_custom_container.dart';
-import 'package:movie_app/Pages/widgets/container_custom_widget.dart';
+import 'package:movie_app/Pages/widgets/bottom_navigation.dart';
+import 'package:movie_app/Pages/widgets/categoriesWIdget.dart';
+import 'package:movie_app/Pages/widgets/container_movie.dart';
+import 'package:movie_app/Pages/widgets/searchBar.dart';
+import 'package:movie_app/Pages/widgets/subWidgets/container_custom_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Welcome Binayak',
+                              'Welcome Commando',
                               style: TextStyle(color: Colors.white),
                             ),
                             SizedBox(
@@ -66,42 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 61, 58, 58),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(50),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 15),
-                                    border: InputBorder.none,
-                                    hintText: 'Search',
-                                    hintStyle: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: GestureDetector(
-                                  onTap: null,
-                                  child: Icon(
-                                    Icons.search,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              )
-                            ],
-                          )),
+                      child: SearchCustomWidget(),
                     ),
                     SizedBox(
                       height: 10,
@@ -145,16 +113,36 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: [
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget(),
-                                  CategoryCustomWidget()
+                                  CategoryCustomWidget(
+                                    text: 'Action',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Romance',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Crime',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Thriller',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Comedy',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Horror',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Aero Space',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Secret',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Alien Life',
+                                  ),
+                                  CategoryCustomWidget(
+                                    text: 'Sci-Fi',
+                                  )
                                 ],
                               ),
                             ),
@@ -168,273 +156,30 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 15,
               ),
-              Container(
-                // this container is for latest movies
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 25),
-                      child: Row(
-                        //this row is for latest movies and view all
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Favorite Movie',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'View all',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                        height: 200,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/81rdqYavf9L._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/61lla1CLIPL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/714ggzDEOSL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg',
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              CustomCategorywiseWidget(
+                preText: 'Favorite Movie',
+                sufText: 'View all',
               ),
               SizedBox(
                 height: 15,
               ),
-              Container(
-                //this container for favourite movies
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 25),
-                      child: Row(
-                        //this row is for latest movies and view all
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Comedy Movie',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'View all',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                        height: 200,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/814lLzbrkOL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/81Xr+rqVmFL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg',
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              CustomCategorywiseWidget(
+                preText: 'Action Movie',
+                sufText: 'View all',
               ),
               SizedBox(
                 height: 15,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 25),
-                      child: Row(
-                        //this row is for latest movies and view all
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Crime Movie',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'View all',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                        height: 200,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/81Xr+rqVmFL._AC_UL400_.jpg',
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              CustomCategorywiseWidget(
+                preText: 'Crime Movie',
+                sufText: 'View all',
               ),
               SizedBox(
                 height: 15,
               ),
-              Container(
-                //this container for favourite movies
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 25),
-                      child: Row(
-                        //this row is for latest movies and view all
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Horror Movie',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'View all',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                        height: 200,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/714ggzDEOSL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
-                            ),
-                            ContainerCustomWidget(
-                              NewtworkImage:
-                                  'https://m.media-amazon.com/images/I/714ggzDEOSL._AC_UL400_.jpg',
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              CustomCategorywiseWidget(
+                preText: 'Horror Movie',
+                sufText: 'View all',
               ),
               SizedBox(
                 height: 20,
@@ -443,28 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          onTap: null,
-          selectedItemColor: Colors.red,
-          selectedFontSize: 15,
-          unselectedItemColor: Colors.grey,
-          unselectedFontSize: 10,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.play_arrow,
-              ),
-              label: 'Play',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
-              label: 'Bookmark',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ]),
+      bottomNavigationBar: BottomNavigationWidget(),
     );
   }
 }
