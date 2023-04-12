@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:movie_app/Pages/widgets/container_custom_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -376,68 +377,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/0057/3728/3618/products/3998dd3fa7e628e415e9805b960bec61_480x.progressive.jpg?v=1573592743'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/1057/4964/products/Spider-Man-Vintage-Movie-Poster-Original-1-Sheet-27x41_ebfcaab4-ac5f-431e-a287-da9b258fbf5a.jpg?v=1665730372'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             )
                           ],
                         ),
@@ -489,68 +445,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/0057/3728/3618/products/3998dd3fa7e628e415e9805b960bec61_480x.progressive.jpg?v=1573592743'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/1057/4964/products/Spider-Man-Vintage-Movie-Poster-Original-1-Sheet-27x41_ebfcaab4-ac5f-431e-a287-da9b258fbf5a.jpg?v=1665730372'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             )
                           ],
                         ),
@@ -601,68 +512,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/0057/3728/3618/products/3998dd3fa7e628e415e9805b960bec61_480x.progressive.jpg?v=1573592743'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/1057/4964/products/Spider-Man-Vintage-Movie-Poster-Original-1-Sheet-27x41_ebfcaab4-ac5f-431e-a287-da9b258fbf5a.jpg?v=1665730372'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             )
                           ],
                         ),
@@ -714,68 +580,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/0057/3728/3618/products/3998dd3fa7e628e415e9805b960bec61_480x.progressive.jpg?v=1573592743'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 7),
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://cdn.shopify.com/s/files/1/1057/4964/products/Spider-Man-Vintage-Movie-Poster-Original-1-Sheet-27x41_ebfcaab4-ac5f-431e-a287-da9b258fbf5a.jpg?v=1665730372'),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
+                              child: ContainerCustomWidget(),
                             )
                           ],
                         ),
@@ -784,6 +605,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
         ),
