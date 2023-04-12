@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:movie_app/Pages/PlayMovie.dart';
 import 'package:movie_app/Pages/widgets/bottom_navigation.dart';
 import 'package:movie_app/Pages/widgets/categoriesWIdget.dart';
 import 'package:movie_app/Pages/widgets/container_movie.dart';
