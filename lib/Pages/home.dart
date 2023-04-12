@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:movie_app/Pages/widgets/categories_custom_container.dart';
 import 'package:movie_app/Pages/widgets/container_custom_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -144,186 +145,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Action',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Comedy',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Romance',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Police',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Funny',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Game',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Horror',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Secret',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Cartoon',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[700],
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Fight',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                  )
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget(),
+                                  CategoryCustomWidget()
                                 ],
                               ),
                             ),
@@ -375,25 +206,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/81rdqYavf9L._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/61lla1CLIPL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/714ggzDEOSL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg',
                             )
                           ],
                         ),
@@ -443,25 +274,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/814lLzbrkOL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/81Xr+rqVmFL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg',
                             )
                           ],
                         ),
@@ -510,25 +341,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/81Xr+rqVmFL._AC_UL400_.jpg',
                             )
                           ],
                         ),
@@ -578,25 +409,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/714ggzDEOSL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://i.ebayimg.com/images/g/5ogAAOSw6JlfVPKh/s-l500.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/61xw5M+AKTL._AC_UL400_.jpg',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: ContainerCustomWidget(),
+                            ContainerCustomWidget(
+                              NewtworkImage:
+                                  'https://m.media-amazon.com/images/I/714ggzDEOSL._AC_UL400_.jpg',
                             )
                           ],
                         ),

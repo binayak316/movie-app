@@ -3,18 +3,20 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class ContainerCustomWidget extends StatelessWidget {
-  const ContainerCustomWidget({super.key});
+  final String NewtworkImage;
+  const ContainerCustomWidget({required this.NewtworkImage});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 140,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-            image: NetworkImage(
-                'https://cdn.cinematerial.com/p/297x/nza9lluu/top-gun-maverick-movie-poster-md.jpg?v=1648561333'),
-            fit: BoxFit.cover),
+    return Padding(
+      padding: const EdgeInsets.only(right: 7),
+      child: Container(
+        width: 140,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+              image: NetworkImage(NewtworkImage as String), fit: BoxFit.cover),
+        ),
       ),
     );
   }
