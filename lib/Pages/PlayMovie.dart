@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:movie_app/Pages/widgets/categoriesWIdget.dart';
+import 'package:movie_app/widgets/categoriesWIdget.dart';
 
 class PlayMovie extends StatelessWidget {
   const PlayMovie({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:movie_app/Pages/widgets/subWidgets/container_custom_widget.dart';
+import 'package:movie_app/widgets/subWidgets/container_custom_widget.dart';
 
 //this is a custom widget which holds an entire container and holds prefix suffix text along with another
 // custom widget which is ContainerCustomWidget for dynamic image

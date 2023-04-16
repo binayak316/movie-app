@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:movie_app/Pages/widgets/categoriesWIdget.dart';
-import 'package:movie_app/Pages/widgets/container_movie.dart';
-import 'package:movie_app/Pages/widgets/searchBar.dart';
+import 'package:movie_app/widgets/categoriesWIdget.dart';
+import 'package:movie_app/widgets/container_movie.dart';
+import 'package:movie_app/widgets/searchBar.dart';
 
 class MainHomeScreenWidget extends StatelessWidget {
   const MainHomeScreenWidget({super.key});

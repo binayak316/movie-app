@@ -7,11 +7,11 @@ import 'package:movie_app/Pages/Bookmark.dart';
 import 'package:movie_app/Pages/PlayMovie.dart';
 import 'package:movie_app/Pages/Profile.dart';
 import 'package:movie_app/Pages/mainHomeScreen.dart';
-import 'package:movie_app/Pages/widgets/bottom_navigation.dart';
-import 'package:movie_app/Pages/widgets/categoriesWIdget.dart';
-import 'package:movie_app/Pages/widgets/container_movie.dart';
-import 'package:movie_app/Pages/widgets/searchBar.dart';
-import 'package:movie_app/Pages/widgets/subWidgets/container_custom_widget.dart';
+import 'package:movie_app/widgets/bottom_navigation.dart';
+import 'package:movie_app/widgets/categoriesWIdget.dart';
+import 'package:movie_app/widgets/container_movie.dart';
+import 'package:movie_app/widgets/searchBar.dart';
+import 'package:movie_app/widgets/subWidgets/container_custom_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
