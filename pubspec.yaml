@@ -40,10 +40,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.0
+  tmdb_api: ^2.1.4
+  http: ^0.13.5
+
 flutter_icons:
   android: true
   ios: true
   image_path: "assets/icon.png"
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

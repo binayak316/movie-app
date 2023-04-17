@@ -7,11 +7,13 @@ import 'package:movie_app/Pages/Bookmark.dart';
 import 'package:movie_app/Pages/PlayMovie.dart';
 import 'package:movie_app/Pages/Profile.dart';
 import 'package:movie_app/Pages/mainHomeScreen.dart';
+import 'package:movie_app/api/movie.dart';
 import 'package:movie_app/widgets/bottom_navigation.dart';
 import 'package:movie_app/widgets/categoriesWIdget.dart';
 import 'package:movie_app/widgets/container_movie.dart';
 import 'package:movie_app/widgets/searchBar.dart';
 import 'package:movie_app/widgets/subWidgets/container_custom_widget.dart';
+import 'package:tmdb_api/tmdb_api.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +23,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String? Movie;
+
   int _currentIndex = 0;
   List Pages = [
     MainHomeScreenWidget(),
@@ -28,6 +32,19 @@ class _HomeScreenState extends State<HomeScreen> {
     Bookmark(),
     Profile(),
   ];
+
+  // MovieModel
+  @override
+  void initState() {
+    // startApp();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  // void startApp() async {
+  //   MovieModel instance = MovieModel(movie_id: 'popular');
+  //   await instance.fetchMovies();
+  // }
 
   @override
   Widget build(BuildContext context) {

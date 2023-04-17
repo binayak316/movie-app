@@ -15,7 +15,9 @@ class ContainerCustomWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
-              image: NetworkImage(NewtworkImage as String), fit: BoxFit.cover),
+            image: NetworkImage(NewtworkImage),
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
