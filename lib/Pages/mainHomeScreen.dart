@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie_app/Model/MovieModel.dart';
+import 'package:movie_app/Model/MovieModelLatest.dart';
 import 'package:movie_app/Model/MovieModelUpcoming.dart';
 import 'package:movie_app/widgets/categoriesWIdget.dart';
 import 'package:movie_app/widgets/container_movie.dart';
@@ -76,31 +77,22 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
     }
   }
 
-  //upcoming movies
-  // Future upcomingMovies() async {
-  //   Response response = await get(Uri.parse(
-  //       'https://api.themoviedb.org/3/movie/upcoming?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1'));
-  //   if (response.statusCode == 200) {
-  //     Map stringResponse2 = jsonDecode(response.body);
-  //     List<dynamic> temp_data2 = stringResponse2['results'];
-  //     // print(temp_data2);
-  //     return temp_data2;
-  //   } else {
-  //     throw Exception('Error at the data');
-  //   }
-  // }
-
-  //now playing movies
-  Future latestMovies() async {
-    Response response = await get(Uri.parse(
+  //letest movies with custom MovieModelLatest
+  List<MovieModelLatest> movielistLatest = [];
+  Future<List<MovieModelLatest>> latestmovies() async {
+    final response = await get(Uri.parse(
         'https://api.themoviedb.org/3/movie/now_playing?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1'));
+    var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
-      Map stringResponse3 = jsonDecode(response.body);
-      List<dynamic> temp_data3 = stringResponse3['results'];
-      // print(temp_data3);
-      return temp_data3;
+      List<dynamic> results = data['results'];
+      for (Map<String, dynamic> i in results) {
+        MovieModelLatest object =
+            MovieModelLatest(poster_path: i['poster_path']);
+        movielistLatest.add(object);
+      }
+      return movielistLatest;
     } else {
-      throw Exception('Error at the data');
+      return movielistLatest;
     }
   }
 
@@ -108,9 +100,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
   void initState() {
     super.initState();
     popularMovies();
-    // upcomingMovies();
-    latestMovies();
-    upcomingmovies();
+    // upcomingmovies();
   }
 
   @override
@@ -363,7 +353,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                           height: 200,
                           width: double.infinity,
                           child: FutureBuilder(
-                            future: latestMovies(),
+                            future: latestmovies(),
                             builder:
                                 (BuildContext context, AsyncSnapshot snapshot) {
                               if (snapshot.hasError) {
@@ -374,7 +364,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                               if (snapshot.hasData) {
                                 return ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: snapshot.data.length,
+                                  itemCount: movielistLatest.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return Padding(
@@ -387,8 +377,9 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                                           image: DecorationImage(
                                             image: NetworkImage(
                                                 "https://image.tmdb.org/t/p/w500" +
-                                                    snapshot.data[index]
-                                                        ["poster_path"]),
+                                                    snapshot.data![index]
+                                                        .poster_path
+                                                        .toString()),
                                             fit: BoxFit.cover,
                                           ),
                                         ),
