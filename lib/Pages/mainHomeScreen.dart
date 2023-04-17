@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:movie_app/Model/MovieModel.dart';
 import 'package:movie_app/widgets/categoriesWIdget.dart';
 import 'package:movie_app/widgets/container_movie.dart';
 import 'package:movie_app/widgets/searchBar.dart';
@@ -34,19 +35,39 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
     }
   }
 
-//toprated movies
-  Future topRatedMovies() async {
-    Response response = await get(Uri.parse(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1"));
+  //toprated movies with custom MovieModel
+
+  List<MovieModel> movielist = [];
+  Future<List<MovieModel>> topratedmovies() async {
+    final response = await get(Uri.parse(
+        'https://api.themoviedb.org/3/movie/top_rated?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1'));
+    var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
-      Map stringResponse1 = jsonDecode(response.body);
-      List<dynamic> temp_data1 = stringResponse1['results'];
-      // print(temp_data1);
-      return temp_data1;
+      List<dynamic> results = data['results'];
+      for (Map<String, dynamic> i in results) {
+        MovieModel moviemodel_object = MovieModel(
+            poster_path: i['poster_path'], original_title: i['original_title']);
+        movielist.add(moviemodel_object);
+      }
+      return movielist;
     } else {
-      throw Exception('Error at the data');
+      return movielist;
     }
   }
+
+//toprated movies
+  // Future topRatedMovies() async {
+  //   Response response = await get(Uri.parse(
+  //       "https://api.themoviedb.org/3/movie/top_rated?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1"));
+  //   if (response.statusCode == 200) {
+  //     Map stringResponse1 = jsonDecode(response.body);
+  //     List<dynamic> temp_data1 = stringResponse1['results'];
+  //     // print(temp_data1);
+  //     return temp_data1;
+  //   } else {
+  //     throw Exception('Error at the data');
+  //   }
+  // }
 
   //upcoming movies
   Future upcomingMovies() async {
@@ -81,7 +102,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
     // TODO: implement initState
     super.initState();
     popularMovies();
-    topRatedMovies();
+    // topRatedMovies();
     upcomingMovies();
     latestMovies();
   }
@@ -232,7 +253,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Favourite',
+                          'Popular',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -260,9 +281,9 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                     child: FutureBuilder(
                       future: popularMovies(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        if (snapshot.hasError) {
+                        if (!snapshot.hasData) {
                           return Center(
-                            child: Text(snapshot.error.toString()),
+                            child: Text('Loading'),
                           );
                         }
                         if (snapshot.hasData) {
@@ -504,9 +525,10 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                           height: 200,
                           width: double.infinity,
                           child: FutureBuilder(
-                            future: topRatedMovies(),
-                            builder:
-                                (BuildContext context, AsyncSnapshot snapshot) {
+                            // future: topRatedMovies(),
+                            future: topratedmovies(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<List<MovieModel>> snapshot) {
                               if (snapshot.hasError) {
                                 return Center(
                                   child: Text(snapshot.error.toString()),
@@ -515,7 +537,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                               if (snapshot.hasData) {
                                 return ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: snapshot.data.length,
+                                  itemCount: movielist.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return Padding(
@@ -527,9 +549,13 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                                               BorderRadius.circular(10),
                                           image: DecorationImage(
                                             image: NetworkImage(
+                                                // "https://image.tmdb.org/t/p/w500" +
+                                                //     snapshot.data [index]
+                                                //         ["poster_path"]
                                                 "https://image.tmdb.org/t/p/w500" +
-                                                    snapshot.data[index]
-                                                        ["poster_path"]),
+                                                    snapshot.data![index]
+                                                        .poster_path
+                                                        .toString()),
                                             fit: BoxFit.cover,
                                           ),
                                         ),
