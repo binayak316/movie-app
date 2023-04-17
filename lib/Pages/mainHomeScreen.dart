@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie_app/Model/MovieModel.dart';
+import 'package:movie_app/Model/MovieModelUpcoming.dart';
 import 'package:movie_app/widgets/categoriesWIdget.dart';
 import 'package:movie_app/widgets/container_movie.dart';
 import 'package:movie_app/widgets/searchBar.dart';
@@ -55,33 +56,39 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
     }
   }
 
-//toprated movies
-  // Future topRatedMovies() async {
+  //upcoming movies with custom MovieModelupcoming
+  List<MovieModelUpcoming> movielistupcoming = [];
+  Future<List<MovieModelUpcoming>> upcomingmovies() async {
+    final response = await get(Uri.parse(
+        'https://api.themoviedb.org/3/movie/upcoming?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1'));
+    var all_data = jsonDecode(response.body.toString());
+    // print(all_data);
+    if (response.statusCode == 200) {
+      List<dynamic> results = all_data['results'];
+      for (Map<String, dynamic> i in results) {
+        MovieModelUpcoming object =
+            MovieModelUpcoming(poster_path: i['poster_path']);
+        movielistupcoming.add(object);
+      }
+      return movielistupcoming;
+    } else {
+      return movielistupcoming;
+    }
+  }
+
+  //upcoming movies
+  // Future upcomingMovies() async {
   //   Response response = await get(Uri.parse(
-  //       "https://api.themoviedb.org/3/movie/top_rated?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1"));
+  //       'https://api.themoviedb.org/3/movie/upcoming?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1'));
   //   if (response.statusCode == 200) {
-  //     Map stringResponse1 = jsonDecode(response.body);
-  //     List<dynamic> temp_data1 = stringResponse1['results'];
-  //     // print(temp_data1);
-  //     return temp_data1;
+  //     Map stringResponse2 = jsonDecode(response.body);
+  //     List<dynamic> temp_data2 = stringResponse2['results'];
+  //     // print(temp_data2);
+  //     return temp_data2;
   //   } else {
   //     throw Exception('Error at the data');
   //   }
   // }
-
-  //upcoming movies
-  Future upcomingMovies() async {
-    Response response = await get(Uri.parse(
-        'https://api.themoviedb.org/3/movie/upcoming?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1'));
-    if (response.statusCode == 200) {
-      Map stringResponse2 = jsonDecode(response.body);
-      List<dynamic> temp_data2 = stringResponse2['results'];
-      // print(temp_data2);
-      return temp_data2;
-    } else {
-      throw Exception('Error at the data');
-    }
-  }
 
   //now playing movies
   Future latestMovies() async {
@@ -99,12 +106,11 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     popularMovies();
-    // topRatedMovies();
-    upcomingMovies();
+    // upcomingMovies();
     latestMovies();
+    upcomingmovies();
   }
 
   @override
@@ -441,7 +447,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                           height: 200,
                           width: double.infinity,
                           child: FutureBuilder(
-                            future: upcomingMovies(),
+                            future: upcomingmovies(),
                             builder:
                                 (BuildContext context, AsyncSnapshot snapshot) {
                               if (snapshot.hasError) {
@@ -452,7 +458,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                               if (snapshot.hasData) {
                                 return ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: snapshot.data.length,
+                                  itemCount: movielistupcoming.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return Padding(
@@ -465,8 +471,9 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                                           image: DecorationImage(
                                             image: NetworkImage(
                                                 "https://image.tmdb.org/t/p/w500" +
-                                                    snapshot.data[index]
-                                                        ["poster_path"]),
+                                                    snapshot.data![index]
+                                                        .poster_path
+                                                        .toString()),
                                             fit: BoxFit.cover,
                                           ),
                                         ),
