@@ -11,6 +11,22 @@ class Bookmark extends StatelessWidget {
       appBar: AppBar(
         title: Text('Bookmark'),
       ),
+      body: Container(
+        child: Column(
+          children: [
+            Image.network(
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png',
+              width: 200, // adjust the width to fit your layout
+            ),
+            SizedBox(
+                height: 8), // add some spacing between the image and the text
+            Text(
+              'My text goes here',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

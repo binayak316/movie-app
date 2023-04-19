@@ -67,8 +67,8 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
     if (response.statusCode == 200) {
       List<dynamic> results = all_data['results'];
       for (Map<String, dynamic> i in results) {
-        MovieModelUpcoming object =
-            MovieModelUpcoming(poster_path: i['poster_path']);
+        MovieModelUpcoming object = MovieModelUpcoming(
+            poster_path: i['poster_path'], original_title: i['original_title']);
         movielistupcoming.add(object);
       }
       return movielistupcoming;
@@ -87,7 +87,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
       List<dynamic> results = data['results'];
       for (Map<String, dynamic> i in results) {
         MovieModelLatest object =
-            MovieModelLatest(poster_path: i['poster_path']);
+            MovieModelLatest(poster_path: i['poster_path'], title: i['title']);
         movielistLatest.add(object);
       }
       return movielistLatest;
@@ -287,21 +287,34 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                             scrollDirection: Axis.horizontal,
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://image.tmdb.org/t/p/w500" +
-                                              snapshot.data[index]
-                                                  ["poster_path"]),
-                                      fit: BoxFit.cover,
+                              return Column(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      width: 140,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                              "https://image.tmdb.org/t/p/w500" +
+                                                  snapshot.data[index]
+                                                      ["poster_path"]),
+                                          fit: BoxFit.fitHeight,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      snapshot.data[index]["title"],
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 8),
+                                    ),
+                                  ),
+                                ],
                               );
                             },
                           );
@@ -367,23 +380,38 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                                   itemCount: movielistLatest.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        width: 140,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                                "https://image.tmdb.org/t/p/w500" +
-                                                    snapshot.data![index]
-                                                        .poster_path
-                                                        .toString()),
-                                            fit: BoxFit.cover,
+                                    return Column(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            width: 140,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                    "https://image.tmdb.org/t/p/w500" +
+                                                        snapshot.data![index]
+                                                            .poster_path
+                                                            .toString()),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            snapshot.data![index].title
+                                                .toString(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 8),
+                                          ),
+                                        )
+                                      ],
                                     );
                                   },
                                 );
@@ -452,23 +480,39 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                                   itemCount: movielistupcoming.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        width: 140,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                                "https://image.tmdb.org/t/p/w500" +
-                                                    snapshot.data![index]
-                                                        .poster_path
-                                                        .toString()),
-                                            fit: BoxFit.cover,
+                                    return Column(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            width: 140,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                    "https://image.tmdb.org/t/p/w500" +
+                                                        snapshot.data![index]
+                                                            .poster_path
+                                                            .toString()),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            snapshot.data![index].original_title
+                                                .toString(),
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    255, 255, 255, 1),
+                                                fontSize: 8),
+                                          ),
+                                        )
+                                      ],
                                     );
                                   },
                                 );
@@ -538,26 +582,41 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                                   itemCount: movielist.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        width: 140,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                                // "https://image.tmdb.org/t/p/w500" +
-                                                //     snapshot.data [index]
-                                                //         ["poster_path"]
-                                                "https://image.tmdb.org/t/p/w500" +
-                                                    snapshot.data![index]
-                                                        .poster_path
-                                                        .toString()),
-                                            fit: BoxFit.cover,
+                                    return Column(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            width: 140,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                    // "https://image.tmdb.org/t/p/w500" +
+                                                    //     snapshot.data [index]
+                                                    //         ["poster_path"]
+                                                    "https://image.tmdb.org/t/p/w500" +
+                                                        snapshot.data![index]
+                                                            .poster_path
+                                                            .toString()),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            snapshot.data![index].original_title
+                                                .toString(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 8),
+                                          ),
+                                        ),
+                                      ],
                                     );
                                   },
                                 );
