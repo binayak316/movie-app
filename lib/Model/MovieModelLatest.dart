@@ -1,6 +1,6 @@
-class MovieModelLatest {
-  String? poster_path;
-  String? title;
+// class MovieModelLatest {
+//   String? poster_path;
+//   String? title;
 
-  MovieModelLatest({required this.poster_path, required this.title});
-}
+//   MovieModelLatest({required this.poster_path, required this.title});
+// }

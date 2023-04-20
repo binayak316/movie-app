@@ -95,12 +95,15 @@ class PlayMovie extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CategoryCustomWidget(
+                        onpress: null,
                         text: 'Action',
                       ),
                       CategoryCustomWidget(
+                        onpress: null,
                         text: 'Comedy',
                       ),
                       CategoryCustomWidget(
+                        onpress: null,
                         text: 'Superhero',
                       ),
                     ],
