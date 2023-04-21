@@ -36,15 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // MovieModel
   @override
   void initState() {
-    // startApp();
-    // TODO: implement initState
     super.initState();
   }
-
-  // void startApp() async {
-  //   MovieModel instance = MovieModel(movie_id: 'popular');
-  //   await instance.fetchMovies();
-  // }
 
   @override
   Widget build(BuildContext context) {

@@ -8,6 +8,8 @@ import 'package:movie_app/Model/popularModel.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
+import 'package:movie_app/Pages/PlayMovie.dart';
+
 class CustomLatest extends StatefulWidget {
   const CustomLatest({super.key});
 
@@ -16,6 +18,10 @@ class CustomLatest extends StatefulWidget {
 }
 
 class _CustomLatestState extends State<CustomLatest> {
+  // String? movie_image;
+  // String? movie_title;
+  // String? movie_description;
+
   List<MainMovieModel> movielist = [];
   Future<List<MainMovieModel>?> latestmovies() async {
     try {
@@ -99,17 +105,42 @@ class _CustomLatestState extends State<CustomLatest> {
                       return Column(
                         children: [
                           Expanded(
-                            child: Container(
-                              width: 140,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                      "https://image.tmdb.org/t/p/w500" +
-                                          movielist[index]
-                                              .posterPath
-                                              .toString()),
-                                  fit: BoxFit.fitHeight,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PlayMovie(
+                                      imageOfMovie:
+                                          "https://image.tmdb.org/t/p/w500" +
+                                              movielist[index]
+                                                  .posterPath
+                                                  .toString(),
+                                      titleOfMovie: movielist[index]
+                                          .originalTitle
+                                          .toString(),
+                                      descriptionOfMovie:
+                                          movielist[index].overview.toString(),
+                                      vote_average: movielist[index]
+                                          .voteAverage
+                                          .toString(),
+                                    ),
+                                  ),
+                                );
+                                // print('Helo');
+                              },
+                              child: Container(
+                                width: 140,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://image.tmdb.org/t/p/w500" +
+                                            movielist[index]
+                                                .posterPath
+                                                .toString()),
+                                    fit: BoxFit.fitHeight,
+                                  ),
                                 ),
                               ),
                             ),

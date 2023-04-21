@@ -6,7 +6,15 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie_app/widgets/categoriesWIdget.dart';
 
 class PlayMovie extends StatelessWidget {
-  const PlayMovie({super.key});
+  String? imageOfMovie;
+  String? descriptionOfMovie;
+  String? titleOfMovie;
+  String? vote_average;
+  PlayMovie(
+      {this.imageOfMovie,
+      this.descriptionOfMovie,
+      this.titleOfMovie,
+      this.vote_average});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +28,7 @@ class PlayMovie extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(
-                        'https://images.unsplash.com/photo-1681088362310-1a7cca939067?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
+                    image: NetworkImage(imageOfMovie.toString()),
                     fit: BoxFit.cover,
                     filterQuality: FilterQuality.high),
                 borderRadius: BorderRadius.all(
@@ -54,7 +61,7 @@ class PlayMovie extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Text(
-                              'IMDB 4.8',
+                              'IMDB  ' + vote_average.toString(),
                               style:
                                   TextStyle(fontSize: 12, color: Colors.black),
                             ),
@@ -85,7 +92,7 @@ class PlayMovie extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     child: Text(
-                      'Thor: Love and Thunder',
+                      titleOfMovie.toString(),
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -119,7 +126,7 @@ class PlayMovie extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 child: SingleChildScrollView(
                   child: Text(
-                    'A paragraph is aA paragraph is a self-contained unit of discourse in writing dealing with a particular point or idea. Though not required by the orthographic conventions of any language with a writing system, paragraphs are a conventional means of organizing extended segments of prose.A paragraph is a self-contained unit of discourse in writing dealing with a particular point or idea. Though not required by the orthographic conventions of any language with a writing system, paragraphs are a conventional means of organizing extended segments of prose. self-contained unit of discourse in writing dealing with a particular point or idea. Though not required by the orthographic conventions of any language with a writing system, paragraphs are a conventional means of organizing extended segments of prose.A paragraph is a self-contained unit of discourse in writing dealing with a particular point or idea. Though not required by the orthographic conventions of any language with a writing system, paragraphs are a conventional means of organizing extended segments of prose.A paragraph is a self-contained unit of discourse in writing dealing with a particular point or idea. Though not required by the orthographic conventions of any language with a writing system, paragraphs are a conventional means of organizing extended segments of prose.',
+                    descriptionOfMovie.toString(),
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         fontSize: 11, fontFamily: 'Times', color: Colors.white),
