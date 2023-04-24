@@ -8,15 +8,23 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 import 'package:movie_app/Pages/PlayMovie.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CustomPopular extends StatefulWidget {
-  const CustomPopular({super.key});
+  // final int id;
+  // CustomPopular({required this.id});
+  const CustomPopular({Key? key}) : super(key: key);
 
   @override
   State<CustomPopular> createState() => _CustomPopularState();
 }
 
 class _CustomPopularState extends State<CustomPopular> {
+  CollectionReference movies = FirebaseFirestore.instance.collection('movies');
+
+  bool click = true;
+
   List<MainMovieModel> movielist = [];
   Future<List<MainMovieModel>?> popularMovies() async {
     final response = await get(Uri.parse(
@@ -27,13 +35,33 @@ class _CustomPopularState extends State<CustomPopular> {
       movielist = results
           .map<MainMovieModel>((e) => MainMovieModel.fromJson(e))
           .toList();
-      setState(() {});
+      if (this.mounted) {
+        setState(() {});
+      }
+
       return movielist;
     } else {
       print(response.statusCode);
       return null;
     }
   }
+
+  // Future<void> addData() async {
+  //   // Call the user's CollectionReference to add a new user
+  //   try {
+  //     FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //     CollectionReference movies = firestore.collection('movies');
+  //     await movies
+  //         .add({
+  //           'id': '500',
+  //         })
+  //         .then((value) => print("User Added"))
+  //         .catchError((error) => print("Failed to add user: $error"));
+  //     print('Movie add successfully');
+  //   } catch (e) {
+  //     print('Failed to add movie $e');
+  //   }
+  // }
 
   // popular movies
   // Future<List<dynamic>> popularMovies() async {
@@ -102,7 +130,21 @@ class _CustomPopularState extends State<CustomPopular> {
                         children: [
                           Expanded(
                             child: GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                // addData();
+                                await movies
+                                    .add({
+                                      "id": movielist[index].id.toString(),
+                                      "image": movielist[index]
+                                          .posterPath
+                                          .toString(),
+                                      "title":
+                                          movielist[index].title.toString(),
+                                    })
+                                    .then((value) => print("User Added"))
+                                    .catchError((error) =>
+                                        print("Failed to add user: $error"));
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -123,20 +165,45 @@ class _CustomPopularState extends State<CustomPopular> {
                                     ),
                                   ),
                                 );
-                                // print('Helo');
                               },
                               child: Container(
                                 width: 140,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://image.tmdb.org/t/p/w500" +
-                                            movielist[index]
-                                                .posterPath
-                                                .toString()),
-                                    fit: BoxFit.fitHeight,
-                                  ),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Image.network(
+                                      "https://image.tmdb.org/t/p/w500" +
+                                          movielist[index]
+                                              .posterPath
+                                              .toString(),
+                                      fit: BoxFit.cover,
+                                      filterQuality: FilterQuality.high,
+                                    ),
+                                    Positioned(
+                                      top: 2,
+                                      right: 12,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          // addData();
+
+                                          setState(() {
+                                            click = !click;
+                                          });
+
+                                          print('favourite icon is clicked');
+                                        },
+                                        child: Icon(
+                                          (click == false)
+                                              ? Icons.favorite_outline
+                                              : Icons.favorite_rounded,
+                                          color: Colors.red,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

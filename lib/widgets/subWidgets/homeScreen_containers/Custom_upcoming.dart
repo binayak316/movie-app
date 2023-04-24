@@ -132,19 +132,37 @@ class _CustomUpComingState extends State<CustomUpComing> {
                                 );
                                 // print('Helo');
                               },
-                              child: Container(
-                                width: 140,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://image.tmdb.org/t/p/w500" +
-                                            movielist[index]
-                                                .posterPath
-                                                .toString()),
-                                    fit: BoxFit.fitHeight,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            "https://image.tmdb.org/t/p/w500" +
+                                                movielist[index]
+                                                    .posterPath
+                                                    .toString()),
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Positioned(
+                                    top: 2,
+                                    right: 10,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        print('fav is clicked');
+                                      },
+                                      child: Icon(
+                                        Icons.favorite_rounded,
+                                        color: Colors.red,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),

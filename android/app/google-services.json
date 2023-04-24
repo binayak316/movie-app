@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1064778631920",
+    "project_id": "desicinemamovieapp",
+    "storage_bucket": "desicinemamovieapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064778631920:android:b152331d17fdc24a549035",
+        "android_client_info": {
+          "package_name": "com.example.movie_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064778631920-c2f7bmb9efv37eppe4g7cgpnivavua82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlByBEzH8pB69tMpO_05Bh9iQBiaxw0pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064778631920-c2f7bmb9efv37eppe4g7cgpnivavua82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

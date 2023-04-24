@@ -101,18 +101,27 @@ class PlayMovie extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CategoryCustomWidget(
-                        onpress: null,
-                        text: 'Action',
-                      ),
-                      CategoryCustomWidget(
-                        onpress: null,
-                        text: 'Comedy',
-                      ),
-                      CategoryCustomWidget(
-                        onpress: null,
-                        text: 'Superhero',
-                      ),
+                      ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black, // Background color
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Favourite',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.favorite_border_outlined,
+                                size: 20,
+                                color: Colors.white,
+                              )
+                            ],
+                          )),
                     ],
                   ),
                 ),
