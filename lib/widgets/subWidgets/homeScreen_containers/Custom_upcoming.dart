@@ -10,6 +10,8 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 import 'package:movie_app/Pages/PlayMovie.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CustomUpComing extends StatefulWidget {
   const CustomUpComing({super.key});
@@ -19,6 +21,7 @@ class CustomUpComing extends StatefulWidget {
 }
 
 class _CustomUpComingState extends State<CustomUpComing> {
+  CollectionReference movies = FirebaseFirestore.instance.collection('movies');
   List<MainMovieModel> movielist = [];
   Future<List<MainMovieModel>?> upcoming() async {
     final response = await get(Uri.parse(
@@ -109,7 +112,19 @@ class _CustomUpComingState extends State<CustomUpComing> {
                         children: [
                           Expanded(
                             child: GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                await movies
+                                    .add({
+                                      "id": movielist[index].id.toString(),
+                                      "image": movielist[index]
+                                          .posterPath
+                                          .toString(),
+                                      "title":
+                                          movielist[index].title.toString(),
+                                    })
+                                    .then((value) => print("user added"))
+                                    .catchError((error) =>
+                                        print("failed to add user: $error"));
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

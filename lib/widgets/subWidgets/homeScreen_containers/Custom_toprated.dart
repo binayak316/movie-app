@@ -11,6 +11,8 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 import 'package:movie_app/Pages/PlayMovie.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CustomTopRated extends StatefulWidget {
   const CustomTopRated({super.key});
@@ -20,6 +22,7 @@ class CustomTopRated extends StatefulWidget {
 }
 
 class _CustomTopRatedState extends State<CustomTopRated> {
+  CollectionReference movies = FirebaseFirestore.instance.collection('movies');
   List<MainMovieModel> movielist = [];
   Future<List<MainMovieModel>?> topratedmovies() async {
     final response = await get(Uri.parse(
@@ -94,7 +97,19 @@ class _CustomTopRatedState extends State<CustomTopRated> {
                         children: [
                           Expanded(
                             child: GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                await movies
+                                    .add({
+                                      "id": movielist[index].id.toString(),
+                                      "image": movielist[index]
+                                          .posterPath
+                                          .toString(),
+                                      "title":
+                                          movielist[index].title.toString(),
+                                    })
+                                    .then((value) => print("User Added"))
+                                    .catchError((error) =>
+                                        print("Failed to add user: $error"));
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
