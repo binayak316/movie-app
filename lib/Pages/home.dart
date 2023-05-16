@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   List Pages = [
     MainHomeScreenWidget(),
-    Bookmark(),
+    // Bookmark(),
     Profile(),
     // Favourite()
   ];
@@ -67,13 +67,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark,
-              // color: Colors.white,
-            ),
-            label: 'Bookmarks',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(
+          //     Icons.bookmark,
+          //     // color: Colors.white,
+          //   ),
+          //   label: 'Bookmarks',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,

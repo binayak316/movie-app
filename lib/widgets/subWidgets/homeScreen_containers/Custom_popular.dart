@@ -8,7 +8,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 import 'package:movie_app/Pages/PlayMovie.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CustomPopular extends StatefulWidget {
@@ -45,37 +45,6 @@ class _CustomPopularState extends State<CustomPopular> {
       return null;
     }
   }
-
-  // Future<void> addData() async {
-  //   // Call the user's CollectionReference to add a new user
-  //   try {
-  //     FirebaseFirestore firestore = FirebaseFirestore.instance;
-  //     CollectionReference movies = firestore.collection('movies');
-  //     await movies
-  //         .add({
-  //           'id': '500',
-  //         })
-  //         .then((value) => print("User Added"))
-  //         .catchError((error) => print("Failed to add user: $error"));
-  //     print('Movie add successfully');
-  //   } catch (e) {
-  //     print('Failed to add movie $e');
-  //   }
-  // }
-
-  // popular movies
-  // Future<List<dynamic>> popularMovies() async {
-  //   Response response = await get(Uri.parse(
-  //       "https://api.themoviedb.org/3/movie/popular?api_key=9355c03054950231ba8c4a88371a95af&language=en-US&page=1"));
-
-  //   if (response.statusCode == 200) {
-  //     Map stringResponse = jsonDecode(response.body);
-  //     List<dynamic> temp_data = stringResponse['results'];
-  //     return temp_data;
-  //   } else {
-  //     throw Exception('Error of the data');
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

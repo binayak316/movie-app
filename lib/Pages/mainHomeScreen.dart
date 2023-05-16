@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:movie_app/Model/MovieModel.dart';
-import 'package:movie_app/Model/MovieModelLatest.dart';
-import 'package:movie_app/Model/popularModel.dart';
+
 import 'package:movie_app/widgets/subWidgets/homeScreen_containers/Custom_latest.dart';
 import 'package:movie_app/widgets/subWidgets/homeScreen_containers/Custom_popular.dart';
 import 'package:movie_app/widgets/subWidgets/homeScreen_containers/Custom_toprated.dart';
 import 'package:movie_app/widgets/subWidgets/homeScreen_containers/Custom_upcoming.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:movie_app/Model/MovieModelUpcoming.dart';
-import 'package:movie_app/widgets/categoriesWIdget.dart';
-import 'package:movie_app/widgets/container_movie.dart';
-import 'package:movie_app/widgets/searchBar.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
 
-// String? stringResponse;
-// String? stringResponse1;
-// String? stringResponse2;
-// // String? stringResponse3;
+import 'package:movie_app/widgets/searchBar.dart';
+
+import '../widgets/categoriesWIdget.dart';
 
 class MainHomeScreenWidget extends StatefulWidget {
   const MainHomeScreenWidget({Key? key});
@@ -129,49 +117,18 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                               children: [
                                 CategoryCustomWidget(
                                   onpress: null,
-                                  // onpress: () {
-                                  //   itemScrollController.scrollTo(
-                                  //     index:
-                                  //         0, // the index of the first item in the CustomPopular() class
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     curve: Curves.easeInOut,
-                                  //   );
-                                  // },
-                                  // itemScrollController: itemScrollController,
-
                                   text: 'Popular',
                                 ),
                                 CategoryCustomWidget(
                                   onpress: null,
-                                  // onpress: () {
-                                  //   itemScrollController.scrollTo(
-                                  //     index: 1,
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     curve: Curves.easeInOut,
-                                  //   );
-                                  // },
                                   text: 'Latest',
                                 ),
                                 CategoryCustomWidget(
                                   onpress: null,
-                                  // onpress: () {
-                                  //   itemScrollController.scrollTo(
-                                  //     index: 2,
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     curve: Curves.easeInOut,
-                                  //   );
-                                  // },
                                   text: 'Up Coming',
                                 ),
                                 CategoryCustomWidget(
                                   onpress: null,
-                                  // onpress: () {
-                                  //   itemScrollController.scrollTo(
-                                  //     index: 3,
-                                  //     duration: Duration(milliseconds: 500),
-                                  //     curve: Curves.easeInOut,
-                                  //   );
-                                  // },
                                   text: 'Top Rated',
                                 ),
                               ],
