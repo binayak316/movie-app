@@ -58,8 +58,8 @@ class _MyLoginState extends State<MyLogin> {
                                 blurRadius: 1.0),
                           ],
                           image: DecorationImage(
-                            image: AssetImage('assets/logo.png'),
-                            // fit: BoxFit.cover,
+                            image: AssetImage('assets/desi.png'),
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),

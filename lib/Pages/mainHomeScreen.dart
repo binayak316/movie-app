@@ -56,7 +56,7 @@ class _MainHomeScreenWidgetState extends State<MainHomeScreenWidget> {
                     ),
                     Container(
                       child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/download.png'),
+                        backgroundImage: AssetImage('assets/back.png'),
                         radius: 30,
                       ),
                     ),
